@@ -21,6 +21,9 @@ RUN curl -fsSL -o dokuwiki.tar.gz "http://download.dokuwiki.org/src/dokuwiki/dok
 
 VOLUME ["/var/www/html/data", "/var/www/html/conf", "/var/www/html/lib/plugins", "/var/www/html/lib/tpl"]
 
+COPY .htaccess /var/www/html/.htaccess
+RUN a2enmod rewrite
+
 COPY docker-entrypoint.sh /entrypoint.sh
 
 ENTRYPOINT ["/entrypoint.sh"]
